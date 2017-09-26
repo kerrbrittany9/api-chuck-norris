@@ -16,7 +16,7 @@ const JokeDisplay = ({ dispatch, joke }) => {
 
 const mapStateToProps = state => {
   return {
-    joke: state.content
+    joke: state.fixedContent
   };
 };
 

@@ -23,6 +23,7 @@ const selectedJoke = (state = defaultState, action) => {
       newJoke = {
         isFetching: false,
         content: action.content,
+        fixedContent: action.content.replace(/&quot;/g, '"'),
         jokeId: action.jokeId
     };
     // newState = Object.assign({}, state, {
