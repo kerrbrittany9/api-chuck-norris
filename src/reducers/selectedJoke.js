@@ -1,9 +1,10 @@
 import constants from "./../constants";
+import v4 from "uuid/v4";
+
 const { defaultState, types } = constants;
 
-const selectedJoke = (state = defaultState.selectedJoke, action) => {
+const selectedJoke = (state = defaultState, action) => {
   let newState;
-
   let newJoke;
   let joke;
 
@@ -11,24 +12,23 @@ const selectedJoke = (state = defaultState.selectedJoke, action) => {
     case types.REQUEST_JOKE:
       newJoke = {
         isFetching: true,
-        joke: action.joke,
-        id: action.id
+        jokeId: action.jokeId
       };
       newState = Object.assign({}, state, {
-        [action.id]: newJoke
+        [action.jokeId]: newJoke
       });
       return newState;
     case types.RECEIVE_JOKE:
-      joke = state[action.id];
-      newJoke = Object.assign({}, joke, {
+      joke = state[action.jokeId];
+      newJoke = {
         isFetching: false,
-        joke: action.joke,
-        id: action.id
-    });
-    newState = Object.assign({}, state, {
-      [action.id]: newJoke
-    });
-    return newState;
+        content: action.content,
+        jokeId: action.jokeId
+    };
+    // newState = Object.assign({}, state, {
+    //   [action.jokeId]: newJoke
+    // });
+    return newJoke;
       default:
         return state;
   }

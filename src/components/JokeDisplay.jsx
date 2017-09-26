@@ -1,21 +1,24 @@
 import React from "react";
 import { fetchJoke }  from "./../actions";
+import { connect } from "react-redux";
 
-function JokeDisplay(props) {
+const JokeDisplay = ({ dispatch, joke }) => {
+  console.log(joke);
   return (
     <div>
       <div>
-        <h1>{content}</h1>
+        <h1>{joke}</h1>
       </div>
-      <button onClick={e => {
-          e.preventDefault();{dispatch(fetchJoke())}
-        }}>Next Joke</button>
+      <button onClick={() => {dispatch(fetchJoke())}}>Next Joke</button>
     </div>
   );
 }
 
-JokeDisplay.propTypes = {
-  content: PropTypes.string
-}
+const mapStateToProps = state => {
+  return {
+    joke: state.content
+  };
+};
 
-export default JokeDisplay;
+
+export default connect(mapStateToProps)(JokeDisplay);
