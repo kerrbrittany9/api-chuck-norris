@@ -71,9 +71,21 @@ module.exports = {
      {
        test: resolve(__dirname, "src/styles/styles.css"),
        loader: 'css-loader'
+     },
+     {
+       test: /\.(png|jpg|gif)$/,
+       use: [
+         {
+           loader: 'url-loader',
+           options: {
+             limit: 8192
+           }
+         }
+       ]
      }
-    ]
-  },
+   ],
+ },
+
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -81,7 +93,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template:'template.ejs',
       appMountId: 'react-app-root',
-      title: 'Redux Karaoke',
+      title: 'Chucky Baby',
       filename: resolve(__dirname, "build", "index.html"),
     }),
   ]

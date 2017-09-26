@@ -5,10 +5,7 @@ import JokeDisplay from "./JokeDisplay";
 function Header(){
   return (
     <div>
-      <div>
-        <h1>Joke</h1>
-      </div>
-      <JokeDisplay />
+      <h1>Joke</h1>
     </div>
   );
 }

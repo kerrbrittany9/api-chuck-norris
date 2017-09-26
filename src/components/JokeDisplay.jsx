@@ -3,12 +3,14 @@ import { fetchJoke }  from "./../actions";
 import { connect } from "react-redux";
 
 const JokeDisplay = ({ dispatch, joke }) => {
-  console.log(joke);
+
+  var jokeStyle = {
+    paddingTop: "40%"
+  }
+
   return (
-    <div>
-      <div>
-        <h1>{joke}</h1>
-      </div>
+    <div  style={jokeStyle}>
+      <h1>{joke}</h1>
       <button onClick={() => {dispatch(fetchJoke())}}>Next Joke</button>
     </div>
   );
